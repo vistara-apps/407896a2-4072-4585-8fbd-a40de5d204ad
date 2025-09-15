@@ -19,7 +19,7 @@ export function DataCard({
   if (variant === 'campaignOffer' && campaign) {
     return (
       <div className={cn(
-        'bg-surface rounded-lg p-6 card-shadow hover:shadow-lg transition-shadow duration-200',
+        'bg-surface rounded-lg p-6 card-shadow card-hover border border-border',
         className
       )}>
         <div className="flex items-start justify-between mb-4">
@@ -67,7 +67,7 @@ export function DataCard({
         )}
 
         {/* Action Button */}
-        <button className="w-full bg-accent text-white py-3 rounded-md font-medium hover:bg-accent/90 transition-colors duration-200">
+        <button className="w-full btn-primary">
           Join Campaign
         </button>
       </div>

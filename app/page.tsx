@@ -8,6 +8,7 @@ import { RewardDisplay } from '../components/ui/RewardDisplay';
 import { ConsentToggle } from '../components/ui/ConsentToggle';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { useMiniKit } from '@coinbase/minikit';
+import { BarChart3, Target, Shield, Users, ShoppingCart, TrendingUp } from 'lucide-react';
 
 export default function HomePage() {
   const { user } = useMiniKit();
@@ -49,8 +50,8 @@ export default function HomePage() {
     <AppShell>
       <div className="min-h-screen bg-bg">
         {/* Header */}
-        <div className="sticky top-0 z-50 bg-bg/80 backdrop-blur-md border-b border-surface">
-          <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="sticky top-0 z-50 bg-bg/95 backdrop-blur-md border-b border-border">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
             <ProfileHeader
               user={mockUserData}
               variant="withAvatarAndReputation"
@@ -59,36 +60,39 @@ export default function HomePage() {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex space-x-1 bg-surface rounded-lg p-1">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex space-x-1 bg-surface rounded-lg p-1 border border-border overflow-x-auto">
             {[
-              { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-              { id: 'campaigns', label: 'Campaigns', icon: '🎯' },
-              { id: 'data', label: 'My Data', icon: '🔒' },
-              { id: 'community', label: 'Community', icon: '👥' },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 flex items-center justify-center space-x-2 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-                  activeTab === tab.id
-                    ? 'bg-accent text-white shadow-sm'
-                    : 'text-textSecondary hover:text-textPrimary hover:bg-surface'
-                }`}
-              >
-                <span>{tab.icon}</span>
-                <span>{tab.label}</span>
-              </button>
-            ))}
+              { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
+              { id: 'campaigns', label: 'Campaigns', icon: Target },
+              { id: 'data', label: 'My Data', icon: Shield },
+              { id: 'community', label: 'Community', icon: Users },
+            ].map((tab) => {
+              const IconComponent = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
+                    activeTab === tab.id
+                      ? 'bg-accent text-white shadow-sm'
+                      : 'text-textSecondary hover:text-textPrimary hover:bg-surface-hover'
+                  }`}
+                >
+                  <IconComponent size={18} />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-6 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-8">
           {activeTab === 'dashboard' && (
             <div className="space-y-6">
               {/* Rewards Overview */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
                 <RewardDisplay
                   variant="token"
                   amount={mockUserData.tokenBalance}
@@ -104,47 +108,47 @@ export default function HomePage() {
               </div>
 
               {/* Fascinating Facts */}
-              <div className="bg-surface rounded-lg p-6 card-shadow">
-                <h3 className="text-xl font-semibold mb-4">Fascinating Facts</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-accent">13</div>
-                    <div className="text-sm text-textSecondary">Data points shared</div>
+              <div className="bg-surface rounded-lg p-6 card-shadow border border-border animate-fade-in">
+                <h3 className="text-xl font-semibold mb-6 text-textPrimary">Fascinating Facts</h3>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center p-4 bg-bg rounded-lg border border-border">
+                    <div className="text-3xl font-bold text-accent mb-1">13</div>
+                    <div className="text-sm text-textMuted">Data points shared</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-accent">185</div>
-                    <div className="text-sm text-textSecondary">Community members</div>
+                  <div className="text-center p-4 bg-bg rounded-lg border border-border">
+                    <div className="text-3xl font-bold text-accent mb-1">185</div>
+                    <div className="text-sm text-textMuted">Community members</div>
                   </div>
                 </div>
               </div>
 
               {/* Recent Activity */}
-              <div className="bg-surface rounded-lg p-6 card-shadow">
-                <h3 className="text-xl font-semibold mb-4">Recent Activity</h3>
+              <div className="bg-surface rounded-lg p-6 card-shadow border border-border animate-fade-in">
+                <h3 className="text-xl font-semibold mb-6 text-textPrimary">Recent Activity</h3>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-bg rounded-md">
+                  <div className="flex items-center justify-between p-4 bg-surface rounded-lg border border-border hover:bg-surface-hover transition-colors duration-200">
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-sm">
-                        🛍️
+                      <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                        <ShoppingCart size={20} className="text-accent" />
                       </div>
                       <div>
-                        <div className="font-medium">Purchase data shared</div>
-                        <div className="text-sm text-textSecondary">2 hours ago</div>
+                        <div className="font-medium text-textPrimary">Purchase data shared</div>
+                        <div className="text-sm text-textMuted">2 hours ago</div>
                       </div>
                     </div>
-                    <div className="text-accent font-medium">+25 BYTE</div>
+                    <div className="text-success font-semibold">+25 BYTE</div>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-bg rounded-md">
+                  <div className="flex items-center justify-between p-4 bg-surface rounded-lg border border-border hover:bg-surface-hover transition-colors duration-200">
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-sm">
-                        📊
+                      <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                        <BarChart3 size={20} className="text-accent" />
                       </div>
                       <div>
-                        <div className="font-medium">Survey completed</div>
-                        <div className="text-sm text-textSecondary">1 day ago</div>
+                        <div className="font-medium text-textPrimary">Survey completed</div>
+                        <div className="text-sm text-textMuted">1 day ago</div>
                       </div>
                     </div>
-                    <div className="text-accent font-medium">+50 BYTE</div>
+                    <div className="text-success font-semibold">+50 BYTE</div>
                   </div>
                 </div>
               </div>
@@ -152,14 +156,18 @@ export default function HomePage() {
           )}
 
           {activeTab === 'campaigns' && (
-            <div className="space-y-6">
+            <div className="space-y-8 animate-fade-in">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold">Available Campaigns</h2>
-                <div className="text-sm text-textSecondary">
-                  {mockCampaigns.length} active campaigns
+                <div>
+                  <h2 className="text-3xl font-bold text-textPrimary">Available Campaigns</h2>
+                  <p className="text-textMuted mt-1">Earn rewards by sharing your data with trusted partners</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-accent">{mockCampaigns.length}</div>
+                  <div className="text-sm text-textMuted">active campaigns</div>
                 </div>
               </div>
-              
+
               <div className="grid gap-6">
                 {mockCampaigns.map((campaign) => (
                   <DataCard
@@ -173,60 +181,80 @@ export default function HomePage() {
           )}
 
           {activeTab === 'data' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-semibold">Data Consent Management</h2>
-              
-              <div className="bg-surface rounded-lg p-6 card-shadow">
-                <h3 className="text-lg font-medium mb-4">Your Data Categories</h3>
+            <div className="space-y-8 animate-fade-in">
+              <div>
+                <h2 className="text-3xl font-bold text-textPrimary">Data Consent Management</h2>
+                <p className="text-textMuted mt-1">Control what data you share and earn rewards securely</p>
+              </div>
+
+              <div className="bg-surface rounded-lg p-8 card-shadow border border-border">
+                <h3 className="text-xl font-semibold mb-6 text-textPrimary">Your Data Categories</h3>
                 <div className="space-y-4">
                   {[
-                    { category: 'Purchase History', enabled: true, description: 'Your shopping patterns and preferences' },
-                    { category: 'Location Data', enabled: false, description: 'Places you visit and travel patterns' },
-                    { category: 'Social Activity', enabled: true, description: 'Your social media interactions' },
-                    { category: 'Health Metrics', enabled: false, description: 'Fitness and wellness data' },
-                  ].map((item) => (
-                    <div key={item.category} className="flex items-center justify-between p-4 bg-bg rounded-md">
-                      <div>
-                        <div className="font-medium">{item.category}</div>
-                        <div className="text-sm text-textSecondary">{item.description}</div>
+                    { category: 'Purchase History', enabled: true, description: 'Your shopping patterns and preferences', icon: ShoppingCart },
+                    { category: 'Location Data', enabled: false, description: 'Places you visit and travel patterns', icon: Target },
+                    { category: 'Social Activity', enabled: true, description: 'Your social media interactions', icon: Users },
+                    { category: 'Health Metrics', enabled: false, description: 'Fitness and wellness data', icon: TrendingUp },
+                  ].map((item) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <div key={item.category} className="flex items-center justify-between p-5 bg-bg rounded-lg border border-border hover:bg-surface-hover transition-colors duration-200">
+                        <div className="flex items-center space-x-4">
+                          <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                            <IconComponent size={24} className="text-accent" />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-textPrimary">{item.category}</div>
+                            <div className="text-sm text-textMuted">{item.description}</div>
+                          </div>
+                        </div>
+                        <ConsentToggle
+                          variant={item.enabled ? 'on' : 'off'}
+                          enabled={item.enabled}
+                          onChange={() => {}}
+                        />
                       </div>
-                      <ConsentToggle
-                        variant={item.enabled ? 'on' : 'off'}
-                        enabled={item.enabled}
-                        onChange={() => {}}
-                      />
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
           )}
 
           {activeTab === 'community' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-semibold">Community</h2>
-              
-              <div className="bg-surface rounded-lg p-6 card-shadow">
-                <h3 className="text-lg font-medium mb-4">Top Contributors</h3>
-                <div className="space-y-3">
+            <div className="space-y-8 animate-fade-in">
+              <div>
+                <h2 className="text-3xl font-bold text-textPrimary">Community</h2>
+                <p className="text-textMuted mt-1">Connect with fellow data contributors and build your reputation</p>
+              </div>
+
+              <div className="bg-surface rounded-lg p-8 card-shadow border border-border">
+                <h3 className="text-xl font-semibold mb-6 text-textPrimary">Top Contributors</h3>
+                <div className="space-y-4">
                   {[
-                    { name: 'DataMaster', score: 2450, avatar: '👑' },
-                    { name: 'PrivacyPro', score: 1890, avatar: '🔒' },
-                    { name: 'ByteCollector', score: 1650, avatar: '💎' },
-                  ].map((user, index) => (
-                    <div key={user.name} className="flex items-center justify-between p-3 bg-bg rounded-md">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                          {user.avatar}
+                    { name: 'DataMaster', score: 2450, avatar: Crown, color: 'text-warning' },
+                    { name: 'PrivacyPro', score: 1890, avatar: Shield, color: 'text-accent' },
+                    { name: 'ByteCollector', score: 1650, avatar: Star, color: 'text-success' },
+                  ].map((user, index) => {
+                    const IconComponent = user.avatar;
+                    return (
+                      <div key={user.name} className="flex items-center justify-between p-4 bg-bg rounded-lg border border-border hover:bg-surface-hover transition-colors duration-200">
+                        <div className="flex items-center space-x-4">
+                          <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                            <IconComponent size={24} className={user.color} />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-textPrimary">{user.name}</div>
+                            <div className="text-sm text-textMuted">Rank #{index + 1}</div>
+                          </div>
                         </div>
-                        <div>
-                          <div className="font-medium">{user.name}</div>
-                          <div className="text-sm text-textSecondary">Rank #{index + 1}</div>
+                        <div className="text-right">
+                          <div className="text-lg font-bold text-accent">{user.score.toLocaleString()}</div>
+                          <div className="text-xs text-textMuted">points</div>
                         </div>
                       </div>
-                      <div className="text-accent font-medium">{user.score} pts</div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>

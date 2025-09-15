@@ -3,6 +3,7 @@
 import { User } from '../../lib/types';
 import { truncateAddress, calculateReputationLevel, getReputationColor } from '../../lib/utils';
 import { cn } from '../../lib/utils';
+import { Star, Crown } from 'lucide-react';
 
 interface ProfileHeaderProps {
   user: User;
@@ -35,8 +36,8 @@ export function ProfileHeader({
             )}
           </div>
           {variant === 'withAvatarAndReputation' && (
-            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-surface rounded-full flex items-center justify-center border-2 border-bg">
-              <span className="text-xs">⭐</span>
+            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-accent rounded-full flex items-center justify-center border-2 border-bg">
+              <Star size={12} className="text-white fill-current" />
             </div>
           )}
         </div>
@@ -48,9 +49,12 @@ export function ProfileHeader({
               {user.profileData.name}
             </h1>
             {variant === 'withAvatarAndReputation' && (
-              <span className={cn('text-sm font-medium', reputationColor)}>
-                {reputationLevel}
-              </span>
+              <div className="flex items-center space-x-1">
+                {reputationLevel === 'Elite' && <Crown size={14} className="text-warning" />}
+                <span className={cn('text-sm font-medium', reputationColor)}>
+                  {reputationLevel}
+                </span>
+              </div>
             )}
           </div>
           <div className="text-sm text-textSecondary">
