@@ -7,40 +7,43 @@ import { DataCard } from '../components/ui/DataCard';
 import { RewardDisplay } from '../components/ui/RewardDisplay';
 import { ConsentToggle } from '../components/ui/ConsentToggle';
 import { ProgressBar } from '../components/ui/ProgressBar';
-import { useMiniKit } from '@coinbase/minikit';
+import { Campaign } from '../lib/types';
+// import { useMiniKit } from '@coinbase/onchainkit/minikit';
 
 export default function HomePage() {
-  const { user } = useMiniKit();
+  // const { context } = useMiniKit();
   const [activeTab, setActiveTab] = useState('dashboard');
 
   const mockUserData = {
     userId: '1',
-    address: user?.address || '0x1234...5678',
+    address: '0x1234...5678', // context?.user?.address ||
     profileData: {
-      name: user?.displayName || 'BytePlus User',
-      avatar: user?.pfpUrl || '/api/placeholder/40/40',
+      name: 'BytePlus User', // context?.user?.displayName ||
+      avatar: '/api/placeholder/40/40', // context?.user?.pfpUrl ||
     },
     tokenBalance: 1250.75,
     reputationScore: 85,
   };
 
-  const mockCampaigns = [
+  const mockCampaigns: Campaign[] = [
     {
       campaignId: '1',
+      requesterId: 'brand-1',
       title: 'Consumer Electronics Survey',
       description: 'Share your purchase history for tech products',
       requiredDataAttributes: ['purchase_history', 'preferences'],
       rewardStructure: { amount: 50, token: 'BYTE' },
-      status: 'active',
+      status: 'active' as const,
       progress: 75,
     },
     {
       campaignId: '2',
+      requesterId: 'research-1',
       title: 'Fitness & Wellness Research',
       description: 'Help improve health apps with your activity data',
       requiredDataAttributes: ['activity_data', 'health_metrics'],
       rewardStructure: { amount: 75, token: 'BYTE' },
-      status: 'active',
+      status: 'active' as const,
       progress: 45,
     },
   ];
