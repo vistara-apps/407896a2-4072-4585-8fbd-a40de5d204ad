@@ -1,0 +1,14 @@
+{
+  "name": "BytePlus Pro",
+  "description": "BytePlus Pro is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://407896a2-4072-4585-8fbd-a40de5d204ad.vercel.app",
+  "properties": {
+    "app": {
+      "name": "BytePlus Pro",
+      "description": "BytePlus Pro is a Base Mini App built with Zara.",
+      "url": "https://407896a2-4072-4585-8fbd-a40de5d204ad.vercel.app",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}

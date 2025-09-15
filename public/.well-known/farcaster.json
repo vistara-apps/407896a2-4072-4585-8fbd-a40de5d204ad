@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "BytePlus Pro",
+    "subtitle": "Built with Zara",
+    "description": "BytePlus Pro is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://407896a2407245858fbda40de5d204ad-wi1q.vercel.app",
+    "splashImageUrl": "https://407896a2407245858fbda40de5d204ad-wi1q.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://407896a2407245858fbda40de5d204ad-wi1q.vercel.app/image.png",
+    "tagline": "BytePlus Pro",
+    "screenshotUrls": [
+      "https://407896a2407245858fbda40de5d204ad-wi1q.vercel.app/screenshot.png",
+      "https://407896a2407245858fbda40de5d204ad-wi1q.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://407896a2407245858fbda40de5d204ad-wi1q.vercel.app/api/webhook"
+  }
+}
