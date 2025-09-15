@@ -7,7 +7,8 @@ import { DataCard } from '../components/ui/DataCard';
 import { RewardDisplay } from '../components/ui/RewardDisplay';
 import { ConsentToggle } from '../components/ui/ConsentToggle';
 import { ProgressBar } from '../components/ui/ProgressBar';
-import { useMiniKit } from '@coinbase/minikit';
+import { PaymentTestSuite } from '../components/ui/PaymentTestSuite';
+import { useMiniKit } from '@worldcoin/minikit-js';
 
 export default function HomePage() {
   const { user } = useMiniKit();
@@ -65,6 +66,7 @@ export default function HomePage() {
               { id: 'dashboard', label: 'Dashboard', icon: '📊' },
               { id: 'campaigns', label: 'Campaigns', icon: '🎯' },
               { id: 'data', label: 'My Data', icon: '🔒' },
+              { id: 'payments', label: 'Payments', icon: '💳' },
               { id: 'community', label: 'Community', icon: '👥' },
             ].map((tab) => (
               <button
@@ -175,7 +177,7 @@ export default function HomePage() {
           {activeTab === 'data' && (
             <div className="space-y-6">
               <h2 className="text-2xl font-semibold">Data Consent Management</h2>
-              
+
               <div className="bg-surface rounded-lg p-6 card-shadow">
                 <h3 className="text-lg font-medium mb-4">Your Data Categories</h3>
                 <div className="space-y-4">
@@ -200,6 +202,10 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          )}
+
+          {activeTab === 'payments' && (
+            <PaymentTestSuite />
           )}
 
           {activeTab === 'community' && (

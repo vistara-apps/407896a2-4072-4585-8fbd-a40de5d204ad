@@ -1,6 +1,6 @@
 'use client';
 
-import { MiniKitProvider } from '@coinbase/minikit';
+import { MiniKitProvider } from '@worldcoin/minikit-js';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { base } from 'wagmi/chains';
 
